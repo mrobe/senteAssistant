@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/ html4/strict.dtd">
+<html>
+<head>
+	<title>Sente Assistant</title>
+	<style>
+	<!-- #include file="template.css" -->
+	</style>
+</head>
+<body>
+<%@ taglib uri="file:senteAssistantTags.tld" prefix="s" %> 
+<s:setupAssistant />
+<s:getStatistics />
+<s:getReferences id="references" />
+
+<table class="statistics">
+<tr><td class="sHeading">Library</td><td><s:getProperty name="libName" property="asString" /></td></tr>
+<tr><td class="sHeading">Database</td><td><s:getProperty name="dbName" property="asString" /></td></tr>
+<tr><td class="sHeading">SQLite Version</td><td><s:getProperty name="sqliteVersion" property="asString" /></td></tr>
+<tr><td class="sHeading">Home Directory</td><td><s:getProperty name="homeDirectory" property="asString" /></td></tr>
+<tr><td class="sHeading">Templates Directory</td><td><s:getProperty name="templatesDirectory" property="asString" /></td></tr>
+<tr><td class="sHeading">Selected Items</td><td><s:getProperty name="citations" property="size" /></td></tr>
+<tr><td class="sHeading">Execution Time</td><td><s:getProperty name="executionTime" property="printString" /> ms</td></tr>
+</table>
+
+</body>
+</html>

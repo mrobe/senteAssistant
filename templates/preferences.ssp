@@ -1,0 +1,158 @@
+<html>
+	<head>
+	<title>Sente Assistant</title>
+	<style type="text/css">
+	body {
+		font-family: 'Lucida Grande', sans-serif; 
+		font-size: 13px;
+		background-color: #E3E0D1;
+		margin: 1em 12em 0em 1em; 
+		line-height: 150%;
+	}
+	h1 { font-size: 14px; font-weight: bold; }
+	table { border: 0px solid black; }
+	td { font-size: 13px; text-align: right; padding-right: 8px; }
+	</style>
+	<script src="senteAssistant.js" type="text/javascript"></script>
+	<script type="text/javascript" src="includes/prototype.js"></script>
+	</head>
+<%	writeOptions:=
+		[:items :selected | 
+		items 
+			do: 	[:aSelectionItem | 
+				response 
+					write: '<option value="';
+					write: aSelectionItem;
+					write: '" '.
+				aSelectionItem = selected 
+					ifTrue: [response write: 'selected'].
+				response
+					write: '>';
+					write: aSelectionItem;
+					write: '</option>']].
+	fontFaces :=	[:selection |
+				writeOptions 
+					value: #('Arial' 'Arial Black' 'Arial Narrow' 'Century Gothic' 'Impact' 
+							'Lucida Grande' 'Lucida Sans Unicode' 'Palatino' 'Palatino Linotype' 'Tahoma' 'Times' 'Verdana')
+					value: selection].
+	fontSizes :=  [:selection |
+				writeOptions 
+					value: #('10' '11' '12' '13' '14' '16' '18' '20' '24' '28' '32' '40')
+					value: selection].
+	prefs := application preferences.
+%>
+<body>
+<h1>Preferences</h1>
+
+<p>Note Style:</p>
+<div style="margin-left: 1em; margin-bottom: 1.5em;" >
+<form id="noteDisplayOptions">
+<table>
+<tr><td style="width: 80px;">Summary:</td>
+<td><select name="noteSummaryFont" style="width: 130px;">
+	<% fontFaces value: prefs noteSummaryFont. %>
+</select></td>
+<td><select name="noteSummarySize">
+	<% fontSizes value: prefs noteSummarySize. %>
+</select></td></tr>
+<tr><td>Title:</td>
+<td><select name="noteTitleFont" style="width: 130px;">
+	<% fontFaces value: prefs noteTitleFont. %>
+</select></td>
+<td><select name="noteTitleSize">
+	<% fontSizes value: prefs noteTitleSize. %>
+</select></td></tr>
+<tr><td>Body:</td>
+<td><select name="noteBodyFont" style="width: 130px;">
+	<% fontFaces value: prefs noteBodyFont. %>
+</select></td>
+<td><select name="noteBodySize">
+	<% fontSizes value: prefs noteBodySize. %>
+</select></td></tr>
+<tr><td>Comment:</td>
+<td><select name="noteCommentFont" style="width: 130px;">
+	<% fontFaces value: prefs noteCommentFont. %>
+</select></td>
+<td><select name="noteCommentSize">
+	<% fontSizes value: prefs noteCommentSize. %>
+</select></td></tr>
+<tr><td>Colors:</td>
+<td><select name="noteColor" style="width: 130px;">
+	<option value="show" <%= prefs showNoteColors ifTrue: ['selected']. %> >Show</option>
+	<option value="hide" <%= prefs showNoteColors ifFalse: ['selected']. %> >Do Not Show</option>
+</select></td>
+<td>&nbsp;</td></tr>
+</table>
+</form>
+</div>
+
+<p>Filter Notes: </p>
+<% doFilter := prefs filterNotesByColor ifTrue: ['checked'] ifFalse: ['']. %>
+<div style="margin: 0em 0em 2em 1em;" >
+<form id="filterNotes">
+	<input type="checkbox" id="filterNotesByColor" name="filterNotesByColor" onclick="toggleColorButtons(this);" value="on" <%= doFilter. %> > By Color</input><br />
+</form>
+</div>
+
+<p>Reference Style:</p>
+<div style="margin-left: 1em;" >
+<form id="referenceDisplayOptions">
+<table>
+<tr><td style="width: 80px;">Heading:</td>
+<td><select name="referenceHeadingFont" style="width: 130px;">
+	<% fontFaces value: prefs referenceHeadingFont. %>
+</select></td>
+<td><select name="referenceHeadingSize">
+	<% fontSizes value: prefs referenceHeadingSize. %>
+</select></td></tr>
+<tr><td style="width: 80px;">Title:</td>
+<td><select name="referenceTitleFont" style="width: 130px;">
+	<% fontFaces value: prefs referenceTitleFont. %>
+</select></td>
+<td><select name="referenceTitleSize">
+	<% fontSizes value: prefs referenceTitleSize. %>
+</select></td></tr>
+<tr><td style="width: 80px;">Author:</td>
+<td><select name="referenceAuthorFont" style="width: 130px;">
+	<% fontFaces value: prefs referenceAuthorFont. %>
+</select></td>
+<td><select name="referenceAuthorSize">
+	<% fontSizes value: prefs referenceAuthorSize. %>
+</select></td></tr>
+</table>
+</form>
+</div>
+
+<p>Reference Format:</p>
+<% format := prefs referenceFormat. %>
+<div style="margin-left: 1em;" >
+<form id="referenceFormat";>
+	<input type="radio" name="refFormat" value="brackets" <%= format == #brackets ifTrue: ['checked']. %> > [Smith 2001]</input><br />
+	<input type="radio" name="refFormat" value="parentheses" <%= format == #parentheses ifTrue: ['checked']. %> > (Smith 2001)</input>
+</form>
+</div>
+
+<p>Tag Pattern:</p>
+<div style="margin-left: 1em;" >
+<form id="tagFormat";>
+	<input type="text" id="tagPattern" name="tagPattern" value="<%= prefs tagPattern. %>" style="width: 20%;" spellcheck="false" />&nbsp;&nbsp;(e.g. <b>#tag</b>, <b>{tag}</b>, etc.)
+</form>
+</div>
+<br />
+
+<form id="resetPreferences">
+	<input type="button" id="defaultPrefs" name="defaultPrefs" value="Restore Default Preferences" />
+</form>
+
+<script>
+	Event.observe('noteDisplayOptions', 'change', setPrefs);
+	Event.observe('filterNotes', 'change', setPrefs);
+	Event.observe('referenceDisplayOptions', 'change', setPrefs);
+	Event.observe('referenceFormat', 'change', setPrefs);
+	Event.observe('tagFormat', 'change', setPrefs);
+	Event.observe('resetPreferences', 'click', setPrefsAndReload);
+</script>
+
+</form>
+</body>
+</html>
