@@ -87,6 +87,24 @@ Use the name attribute to identify the variable.</info>
     <tagclass>VisualWave.SetupAssistantTag</tagclass>
     <info></info>
     <bodycontent>empty</bodycontent>
+    <attribute>
+        <name>useAnnotations</name>
+        <required>false</required>
+  </attribute>
+  </tag>      
+
+  <tag>
+    <name>setupAssistantChild</name>
+    <tagclass>VisualWave.SetupAssistantChildTag</tagclass>
+    <info></info>
+    <bodycontent>empty</bodycontent>
+  </tag>      
+
+  <tag>
+    <name>releaseAssistant</name>
+    <tagclass>VisualWave.ReleaseAssistantTag</tagclass>
+    <info></info>
+    <bodycontent>empty</bodycontent>
   </tag>      
 
   <tag>
@@ -152,6 +170,35 @@ Use the name attribute to identify the variable.</info>
   </tag>      
 
   <tag>
+    <name>getAnnotations</name>
+    <tagclass>VisualWave.GetAnnotationsTag</tagclass>
+    <info></info>
+    <bodycontent>empty</bodycontent>
+    <attribute>
+      <name>reference</name>
+      <required>true</required>
+    </attribute>
+  </tag>      
+
+  <tag>
+    <name>getAnnotationManagementLinks</name>
+    <tagclass>VisualWave.GetAnnotationManagementTag</tagclass>
+    <info></info>
+    <bodycontent>empty</bodycontent>
+    <attribute>
+      <name>reference</name>
+      <required>true</required>
+    </attribute>
+  </tag>      
+
+  <tag>
+    <name>getUpdateControl</name>
+    <tagclass>VisualWave.GetUpdateControlTag</tagclass>
+    <info></info>
+    <bodycontent>empty</bodycontent>
+  </tag>      
+
+  <tag>
     <name>div</name>
     <tagclass>VisualWave.DivTag</tagclass>
     <info></info>
@@ -195,6 +242,50 @@ Use the name attribute to identify the variable.</info>
     <bodycontent>empty</bodycontent>
     <attribute>
       <name>name</name>
+      <required>true</required>
+    </attribute>
+  </tag>      
+
+  <tag>
+    <name>getEditor</name>
+    <tagclass>VisualWave.GetReferenceEditorTag</tagclass>
+    <info></info>
+    <bodycontent>empty</bodycontent>
+    <attribute>
+      <name>name</name>
+      <required>true</required>
+    </attribute>
+  </tag>      
+
+  <tag>
+    <name>getTitle</name>
+    <tagclass>VisualWave.GetReferenceTitleTag</tagclass>
+    <info></info>
+    <bodycontent>empty</bodycontent>
+    <attribute>
+      <name>name</name>
+      <required>true</required>
+    </attribute>
+  </tag>      
+
+  <tag>
+    <name>getPublicationTitle</name>
+    <tagclass>VisualWave.GetReferencePublicationTitleTag</tagclass>
+    <info></info>
+    <bodycontent>empty</bodycontent>
+    <attribute>
+      <name>name</name>
+      <required>true</required>
+    </attribute>
+  </tag>      
+
+  <tag>
+    <name>getFullCitation</name>
+    <tagclass>VisualWave.GetReferenceFullCitationTag</tagclass>
+    <info></info>
+    <bodycontent>empty</bodycontent>
+    <attribute>
+      <name>reference</name>
       <required>true</required>
     </attribute>
   </tag>      
@@ -272,8 +363,52 @@ Use the name attribute to identify the variable.</info>
   </tag>      
 
   <tag>
+    <name>getNoteTitle</name>
+    <tagclass>VisualWave.GetNoteTitleTag</tagclass>
+    <info></info>
+    <bodycontent>empty</bodycontent>
+    <attribute>
+      <name>name</name>
+      <required>true</required>
+    </attribute>
+  </tag>      
+
+  <tag>
+    <name>getNoteQuotation</name>
+    <tagclass>VisualWave.GetNoteQuotationTag</tagclass>
+    <info></info>
+    <bodycontent>empty</bodycontent>
+    <attribute>
+      <name>name</name>
+      <required>true</required>
+    </attribute>
+  </tag>      
+
+  <tag>
+    <name>getNoteComment</name>
+    <tagclass>VisualWave.GetNoteCommentTag</tagclass>
+    <info></info>
+    <bodycontent>empty</bodycontent>
+    <attribute>
+      <name>name</name>
+      <required>true</required>
+    </attribute>
+  </tag>      
+
+  <tag>
     <name>getReferenceCitation</name>
     <tagclass>VisualWave.GetReferenceCitationTag</tagclass>
+    <info></info>
+    <bodycontent>empty</bodycontent>
+    <attribute>
+      <name>reference</name>
+      <required>true</required>
+    </attribute>
+  </tag>      
+
+  <tag>
+    <name>getReferencePermalink</name>
+    <tagclass>VisualWave.GetReferencePermalinkTag</tagclass>
     <info></info>
     <bodycontent>empty</bodycontent>
     <attribute>

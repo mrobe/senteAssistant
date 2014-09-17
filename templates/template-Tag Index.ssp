@@ -2,15 +2,15 @@
 <html>
 <head>
 	<title>Sente Assistant</title>
-	<style>
-	<!-- #include file="template.css" -->
-	</style>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link href="template.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <%@ taglib uri="file:senteAssistantTags.tld" prefix="s" %> 
 <s:setupAssistant />
 <s:getTaggedReferences id="references" name="tagDictionary" keys="tagKeys" />
 
+<p style="text-align: right;" />
 <div class="tagIndex">
 	<s:prefStyle property="headingGreyCSS">Tag Index</s:prefStyle>
 	<s:do name="tagKeys" property="yourself" variable="aTagKey"> 
@@ -22,9 +22,9 @@
 <s:prefStyle property="headingGreyCSS">References</s:prefStyle>
 <s:do name="references" property="yourself" variable="aReference"> 
 	<div class="senteReference">
-		<s:prefStyle property="referenceTitleCSS"><s:getReferenceProperty name="aReference" property="searchableTitle" /></s:prefStyle>
+		<s:prefStyle property="referenceTitleCSS"><s:getTitle name="aReference" /></s:prefStyle>
 		<s:prefStyle property="referenceAuthorCSS"><s:getAuthor name="aReference" /> <s:getReferenceCitation reference="aReference" /></s:prefStyle>
-	</div><br />
+	</div>
 </s:do>
 <br />
 
@@ -37,10 +37,10 @@
 		<s:do name="taggedNotes" property="yourself" variable="aNote"> 
 			<s:getNoteReference note="aNote" reference="aReference" />
 			<s:noteStyle name="aNote">
-				<s:prefStyle property="noteTitleCSS"><s:getProperty name="aNote" property="title" /></s:prefStyle>
-					<s:prefStyle property="noteBodyCSS"><s:getProperty name="aNote" property="quotation" />
+				<s:prefStyle property="noteTitleCSS"><s:getNoteTitle name="aNote" /></s:prefStyle>
+					<s:prefStyle property="noteBodyCSS"><s:getNoteQuotation name="aNote" />
  						<s:getNoteCitation reference="aReference" note="aNote" form="full" /></s:prefStyle>
-					<s:prefStyle property="noteCommentCSS"><s:getProperty name="aNote" property="formattedComment" /></s:prefStyle>
+					<s:prefStyle property="noteCommentCSS"><s:getNoteComment name="aNote" /></s:prefStyle>
 			</s:noteStyle>
 		</s:do>
 		<br />
@@ -50,4 +50,5 @@
 </div>
 
 </body>
+<s:releaseAssistant />
 </html>

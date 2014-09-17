@@ -94,6 +94,14 @@
 </form>
 </div>
 
+<p>Filter Results: </p>
+<% shouldHighlight := prefs highlightSearchResults ifTrue: ['checked'] ifFalse: ['']. %>
+<div style="margin: 0em 0em 2em 1em;" >
+<form id="searchResults">
+	<input type="checkbox" id="highlightSearchResults" name="highlightSearchResults" value="on" <%= shouldHighlight. %> > Highlight</input><br />
+</form>
+</div>
+
 <p>Reference Style:</p>
 <div style="margin-left: 1em;" >
 <form id="referenceDisplayOptions">
@@ -119,6 +127,13 @@
 <td><select name="referenceAuthorSize">
 	<% fontSizes value: prefs referenceAuthorSize. %>
 </select></td></tr>
+<tr><td style="width: 80px;">Annotation:</td>
+<td><select name="referenceAnnotationFont" style="width: 130px;">
+	<% fontFaces value: prefs referenceAnnotationFont. %>
+</select></td>
+<td><select name="referenceAnnotationSize">
+	<% fontSizes value: prefs referenceAnnotationSize. %>
+</select></td></tr>
 </table>
 </form>
 </div>
@@ -128,14 +143,15 @@
 <div style="margin-left: 1em;" >
 <form id="referenceFormat";>
 	<input type="radio" name="refFormat" value="brackets" <%= format == #brackets ifTrue: ['checked']. %> > [Smith 2001]</input><br />
-	<input type="radio" name="refFormat" value="parentheses" <%= format == #parentheses ifTrue: ['checked']. %> > (Smith 2001)</input>
+	<input type="radio" name="refFormat" value="parentheses" <%= format == #parentheses ifTrue: ['checked']. %> > (Smith 2001)</input><br />
+	<input type="radio" name="refFormat" value="curlies" <%= format == #curlies ifTrue: ['checked']. %> > {Smith 2001}</input>
 </form>
 </div>
 
 <p>Tag Pattern:</p>
 <div style="margin-left: 1em;" >
 <form id="tagFormat";>
-	<input type="text" id="tagPattern" name="tagPattern" value="<%= prefs tagPattern. %>" style="width: 20%;" spellcheck="false" />&nbsp;&nbsp;(e.g. <b>#tag</b>, <b>{tag}</b>, etc.)
+	<input type="text" id="tagPattern" name="tagPattern" value="<%= prefs tagPattern. %>" style="width: 15%;" spellcheck="false" />&nbsp;&nbsp;(e.g. <b>#tag</b>, <b>{tag}</b>, <b>$$tag$$</b>, etc.)
 </form>
 </div>
 <br />
@@ -147,6 +163,7 @@
 <script>
 	Event.observe('noteDisplayOptions', 'change', setPrefs);
 	Event.observe('filterNotes', 'change', setPrefs);
+	Event.observe('searchResults', 'change', setPrefs);
 	Event.observe('referenceDisplayOptions', 'change', setPrefs);
 	Event.observe('referenceFormat', 'change', setPrefs);
 	Event.observe('tagFormat', 'change', setPrefs);

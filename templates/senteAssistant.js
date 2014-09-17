@@ -2,6 +2,8 @@ var successFlag = false;
 var response = false;
 var responseID = '';
 var errorID = '';
+var messageID = '';
+var referenceID = '';
 
 function postSilently(url, formObject) {
 	successFlag = false;
@@ -62,14 +64,183 @@ function setFilter(event) {
 	displayContent();
 }
 
-function setFilterFields(event) {
+function setFields(event) {
 	postSilently('/servlet/SenteAssistantPreferencesServlet/' + this.id, this);
 	displayContent();
 }
 
 function setDisplayScope(event) {
 	postSilently('/servlet/SenteAssistantPreferencesServlet/' + this.id, this);
+	var referenceSelect = document.getElementById('referenceSelect');
+	var selectedFilter = referenceSelect.options[referenceSelect.selectedIndex].value;
+	var target = document.getElementById('referenceInputFields');
+	if (selectedFilter[0] != 'f') {
+		target.style.display = 'none';
+		} else {
+		target.style.display = 'block';
+	}
 	displayContent();
+}
+
+function showSuccess(resp) {
+	var rID = 'an-' + referenceID;
+	$(rID).innerHTML = resp.responseText;
+	successFlag = true;
+}
+
+function showError(resp) {
+	var rID = 'an-' + referenceID;
+	$(rID).innerHTML = '<span style="color: red;">' + resp.responseText + '</span>';
+	successFlag = true;
+}
+
+function showCheckAndUpdateSuccess(resp) {
+	if (resp.responseText.charAt(0) == '<') {
+		var rID = 'an-' + referenceID;
+		$(rID).innerHTML = resp.responseText;
+		$(messageID).innerHTML = 'Updated';
+	} else {
+		$(messageID).innerHTML = resp.responseText + ' <a class="noteSource" href="#" onClick="updateAnnotations(referenceID);">Update</a> or <a class="noteSource" href="#" onClick="$(messageID).innerHTML = null;">Cancel</a>?';
+	}
+	successFlag = true;
+}
+
+function showUpdateSuccess(resp) {
+	var rID = 'an-' + referenceID;
+	$(rID).innerHTML = resp.responseText;
+	$(messageID).innerHTML = '';
+	successFlag = true;
+}
+
+function showUpdateError(resp) {
+	$(messageID).innerHTML = '<span style="color: red;">' + resp.responseText + '</span>';
+}
+
+function updateAnnotations(refID) {
+	referenceID = refID;
+	messageID = 'ms-' + refID;
+	successFlag = false;
+	$(messageID).innerHTML = '<img src="progress.gif" />';
+	var result = new Ajax.Request ('/servlet/SenteAssistantAnnotationsServlet/update/' + refID , {
+			onSuccess : showUpdateSuccess,
+			onFailure : showUpdateError,
+			asynchronous : true,
+			method : 'get'
+			});
+}
+
+function checkAndUpdateAnnotations(refID) {
+	referenceID = refID;
+	messageID = 'ms-' + refID;
+	successFlag = false;
+	$(messageID).innerHTML = '<img src="progress.gif" />';
+	var result = new Ajax.Request ('/servlet/SenteAssistantAnnotationsServlet/checkAndUpdate/' + refID , {
+			onSuccess : showCheckAndUpdateSuccess,
+			onFailure : showUpdateError,
+			asynchronous : true,
+			method : 'get'
+			});
+}
+
+function showUpdateAllSuccess(resp) {
+	successFlag = true;
+}
+
+function showUpdateAllError(resp) {
+	$('updateAllError').innerHTML = resp.responseText;
+}
+
+function updateAllAnnotations() {
+	successFlag = false;
+	var result = new Ajax.Request ('/servlet/SenteAssistantAnnotationsServlet/updateAll' , {
+			onSuccess : showUpdateAllSuccess,
+			onFailure : showUpdateAllError,
+			asynchronous : true,
+			method : 'get'
+			});
+	new Ajax.PeriodicalUpdater('dialog-content', '/servlet/SenteAssistantAnnotationsServlet/updateStatus', { method: 'get', frequency: 0.5 });
+}
+
+function cancelUpdateAnnotations() {
+	successFlag = false;
+	var result = new Ajax.Request ('/servlet/SenteAssistantAnnotationsServlet/cancelUpdate' , {
+			onSuccess : showUpdateAllSuccess,
+			onFailure : showUpdateAllError,
+			asynchronous : true,
+			method : 'get'
+			});
+}
+
+function editAnnotations(refID, enable) {
+	var targetElem, anEditor;
+	messageID = 'ms-' + refID;
+	$(messageID).innerHTML = '';
+	var annotationID = 'an-' + refID;
+	var annotationElements = $(annotationID).getElementsByClassName('annotationContent');
+	for (var i = 0; i < annotationElements.length; i++) { 
+		targetElem = annotationElements[i];
+		targetElem.setAttribute('contenteditable', enable);
+		if (enable) {
+			CKEDITOR.inline(targetElem.id);
+		} else {
+			anEditor = editorForID(targetElem.id);
+			if (anEditor != false) {
+				if (anEditor.checkDirty()) { 
+					postAnnotationEdit(anEditor);
+				}
+				anEditor.destroy(); 
+			}
+		}
+	}
+	annotationElements = $(annotationID).getElementsByClassName('annotationDelete');
+	for (var i = 0; i < annotationElements.length; i++) { 
+		annotationElements[i].style.visibility = (enable) ? 'visible' : 'hidden';
+	}
+	document.getElementById('cn-' + refID).style.display = (enable) ? 'inline' : 'none';
+	document.getElementById('en-' + refID).style.display = (enable) ? 'none' : 'inline';
+}
+
+function addAnnotation(refID) {
+	referenceID = refID;
+	messageID = 'ms-' + refID;
+	editAnnotations(refID, false);
+	successFlag = false;
+	$(messageID).innerHTML = '<img src="progress.gif" />';
+	var result = new Ajax.Request ('/servlet/SenteAssistantAnnotationsServlet/add/' + refID , {
+			onSuccess : showSuccess,
+			onFailure : showError,
+			asynchronous : false,
+			method : 'get'
+			});
+	editAnnotations(refID, true);
+	$(messageID).innerHTML = 'Added';
+}
+
+function deleteAnnotations(refID) {
+	var formValues = document.getElementById('fm-' + refID).serialize();
+	referenceID = refID;
+	messageID = 'ms-' + refID;
+	editAnnotations(refID, false);
+	successFlag = false;
+	$(messageID).innerHTML = '<img src="progress.gif" />';
+	var result = new Ajax.Request ('/servlet/SenteAssistantAnnotationsServlet/delete/' + refID , {
+			onSuccess : showSuccess,
+			onFailure : showError,
+			asynchronous : false,
+			method : 'post',
+			parameters : formValues
+			});
+	editAnnotations(refID, true);
+	$(messageID).innerHTML = 'Deleted';
+}
+
+function editorForID(targetID) {
+	var anEditor;
+	for(var i in CKEDITOR.instances) {
+		anEditor = CKEDITOR.instances[i];
+		if (anEditor.name == targetID) return anEditor;
+	}
+	return false;
 }
 
 function saveFile(rID, eID) {

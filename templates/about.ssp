@@ -5,17 +5,17 @@
 	body {
 		font-family: 'Lucida Grande', sans-serif;
 		font-size: 13px;
-		margin: 1em 12em 0em 1em; 
+		margin: 2em 12em 0em 2em; 
 		line-height: 150%;
 	}
-	h1 { font-size: 16px; font-weight: bold; }
-	h2 { font-size: 14px; font-weight: bold; }
+	h1 { font-size: 18px; font-family: 'Arial Narrow', sans-serif; }
+	h2 { font-size: 16px; font-family: 'Arial Narrow', sans-serif; }
 	.cmd {font-family: LucidaGrande, sans-serif; font-weight: bold;}
 	</style>
 	</head>
 <body>
 <h1>Sente Assistant</h1>
-<p>Version 0.68, 11 April, 2014.<br />
+<p>Version 0.69, 15 September, 2014.<br />
 Copyright &copy; 2012-2014. M. Roberts. This software is available for non-commercial use <u>only</u>.</p>
 
 <h2>Overview</h2>
@@ -25,7 +25,8 @@ Copyright &copy; 2012-2014. M. Roberts. This software is available for non-comme
 <ul>
 <li>Browse your Sente notes, sorted by their correct position on the source page</li>
 <li>Perform keyword, wildcard, or tag searches of your notes</li>
-<li>Search the references you select in Sente, or across all notes in your Library</li>
+<li>Add XHTML annotations to your references</li>
+<li>Search the references you select in Sente, or across all notes/annotations in your Library</li>
 <li>Generate an index of all tagged notes</li>
 <li>Identify duplicate references in your library</li>
 <li>Save your filtered notes or search results in a single RTF, HTML, PDF, ODT, DOC, DOCX, or TXT file</li>
@@ -34,11 +35,12 @@ Copyright &copy; 2012-2014. M. Roberts. This software is available for non-comme
 </ul>
 
 <h2>Disclaimer</h2>
-<p><i>This is a free, prototype application, for non-commercial use only. The Assistant 
-is designed to only read your Sente Library. It includes nothing that modifies or changes the content of your library,
+<p><i>Sente Assistant is a free, third-party application, not a supported product. It is offered "as is" at no
+cost, for non-commercial use only. It is my hope that it may be useful for your research. The Assistant is 
+designed to only read your Sente Library. It includes nothing that modifies or changes the content of your library,
 and should be completely safe. Nevertheless, I offer no warranty or guarantee of the fitness of this application.
-I have tested the Assistant only on OS X 10.6, with Safari 5 and Firefox 13. It should work under
-other configurations, but I haven't tried them.</i></p>
+I have tested the Assistant with Sente 6.6.5 on OS X 10.9.2, with recent versions of Safari and Firefox. It should 
+work under other configurations (e.g. Chrome), but I haven't tried them.</i></p>
 
 <h2>Rationale</h2>
 <p>I was inspired to create this after I tried Dana Leighton's nifty script for exporting Sente notes. Originally,
@@ -85,11 +87,13 @@ each of these headings is a hyperlink to the associated note. Each <span class="
 to a template file. You can edit these templates to modify the presentation, or add new ones.</p>
 
 <h2>Filtering Notes</h2>
-<p>You can also filter the notes for currently-selected references by choosing the <span class="cmd">Notes Contain</span> 
-option on the <span class="cmd">Filter</span> dropdown menu, and then entering filter strings. In this way, you can search 
+<p>You can also filter the notes for currently-selected references by choosing the <span class="cmd">Filter</span> 
+option on the <span class="cmd">Notes</span> dropdown menu, and then entering filter strings. In this way, you can search 
 any part of the notes, or focus on the titles, quotations, or comments. If you enter more than one filter, a logical AND will be 
 performed for titles, quotations, comments, and only the notes that contain the specified filter string(s) will be displayed. 
-These filtering operations are case-insensitive. Wildcards are possible using the <span class="cmd">%</span> character.</p>
+If you enter a filter in the <span class="cmd">Any</span> field, it will ignore the others and perform a logical OR match 
+for this string against all the note fields. These filtering operations are case-insensitive. Wildcards are possible using the 
+<span class="cmd">%</span> character.</p>
 
 <p>If you select <span class="cmd">Filter Notes: By Color</span> on the <span class="cmd">Preferences</span> page, 
 a color palette appears on the sidebar. Use this to filter notes by their color. To enable or disable a particular color filter, 
@@ -100,10 +104,11 @@ notes display. You can also refresh the notes display at any time by clicking on
 at the top left.</p>
 
 <h2>Searching your Reference Library</h2>
-<p>It is also possible to expand your search from the notes of the currently-selected references to all references in your 
-entire Library. For this, select <span class="cmd">All References</span> from the lower drop-down menu of the 
-<span class="cmd">Filter</span> options. With this option, your note filtering options can be applied to a large set
-of references. This may be useful for locating all notes on a particular author or concept.</p>
+<p>By default, the Assistant will only display the references you have seleced in Sente. It is also possible to expand your 
+search from the currently-selected references to all references in your entire Library. For this, select <span class="cmd">All References</span> 
+from the <span class="cmd">References</span> drop-down menu. Other options in this menu enable you to filter references
+for strings in the title, author names, or annotations on your references (annotations are explained below). Using these options, your note filtering options can be applied to either a larger or more specific set of references. This may be useful for locating all 
+notes on a particular author or concept.</p>
 
 <h2>Working with Tagged Notes</h2>
 <p>Using the filters, you can find all notes that have been marked with a specific tag (e.g. <span class="cmd">#history</span>) 
@@ -111,16 +116,14 @@ in the note's comment field. That is, you can enter the tags as free-form text i
 notes is also possible, e.g., a search for <span class="cmd">#%history</span> would find <span class="cmd">#americanHistory</span>.</p>
 
 <p>To view an index of all the tags used by the currently-selected references, select <span class="cmd">Tag Index</span>
-on the <span class="cmd">View</span> drop-down menu. You can also view an index of all the tags you have used in the entire 
-library by selecting the <span class="cmd">All References</span> filtering option.</p>
+on the <span class="cmd">View</span> drop-down menu. You can also view an index of all the tags you have used in the entire library by selecting the <span class="cmd">All References</span> filtering option.</p>
 
 <p>By default, the tag format uses a hash mark (e.g., <span class="cmd">#history</span>), but you can specify your own 
 custom format from the <span class="cmd">Preferences</span> page. The format specified on this page is used to generate 
 the tag index. If you use the hash mark or another single character, your tags cannot include spaces; however, if you use curly 
-brackets or some other characters at the beginning and ending of the tag pattern, your tags can be short phrases that include 
-spaces, hyphens, or other non-alphanumeric characters. For the tag markers, only non-alphanumeric characters are recognized 
-for tags, with the exception of a few reserved characters used by the SQLite database (e.g., single quote, underscrore, percent 
-sign, and ampersand).</p>
+brackets or some other characters at the beginning and ending of the tag pattern (e.g., <span class="cmd">{my tag}</span>), 
+your tags can be short phrases that include spaces, hyphens, or other non-alphanumeric characters. For the tag delimiters, only non-alphanumeric characters are recognized for tags, with the exception of a few reserved characters used by the SQLite 
+database (e.g., single quote, underscrore, percent sign, and ampersand) which are not recognized.</p>
 
 <h2>Finding Duplicate References</h2>
 <p>Use the <span class="cmd">View</span> option <span class="cmd">Duplicate References</span> to see all references 
@@ -128,6 +131,24 @@ with identical titles. (This option ignores all of the note filtering settings.)
 You can click on these light blue links to switch focus to Sente and select the duplicate reference. Although it is best to 
 double-check the duplicate items first, you can easily hit <span class="cmd">Command+Delete</span> in Sente to remove 
 a duplicate reference from your Library.</p>
+
+<h2>Annotations</h2>
+<p>Use the <span class="cmd">View</span> option <span class="cmd">Annotations</span> to view and edit annotations
+on your references. Annotations are like tagged metadata, but they associate free-form XHTML with each Sente reference. 
+In this fashion, you can annotate your references with formatted text, ordered and unordered lists, hyperlinks, etc. For example,
+when viewing a reference to a book in the <span class="cmd">Annotations</span> view, click <span class="cmd">Edit</span>
+followed by <span class="cmd">Add</span> to create a new annotation. You can then select and edit the name and content of the annotation using the built-in text editor. When finished, click <span class="cmd">Done</span> to save your changes.</p>
+
+<p>The Assistant can filter your references to find strings in your annotations. For example, to find all references that include 
+the string "american history" in an annotation, select <span class="cmd">Filter All</span> on the <span class="cmd">References</span> drop-down menu, and enter "american history" in the <span class="cmd">Annotation</span> field.</p>
+
+<p>Annotations are associated with Sente References, but they are held in a separate database. In keeping with the design 
+of Sente Assistant, your library is never modified. For this reason, an annotation is associated with a specific reference in a 
+specific library. If you move the reference to another library, the annotation will not be duplicated. They are stored in the file 
+~/Documents/Sente Assistant Annotations.sqlite.</p>
+
+<p>Annotations can also be used to hold metadata such as a summary or table of contents. The Assistant knows how to 
+fetch this information from the WorldCat database (at present, for books only). For this, click <span class="cmd">Get Metadata</span>. The <span class="cmd">Annotations</span> view also includes a <span class="cmd">Get all Metadata</span> link in the upper-right corner of the view. Clicking on this enables you to fetch metadata in bulk from WorldCat, for all references in the Assistant's view. Note that if you fetch metadata and then edit it, fetching it again will overwrite your changes.</p>
 
 <h2>Limitations</h2>
 <p>Sente includes a built-in web browser, and it was originally my intention to run the Sente Assistant in one tab of this
@@ -147,6 +168,8 @@ file <span class="cmd">template.css</span>, while the various views are generate
 you refresh. As always, you should make a back-up before you attempt any changes. Each time you modify a page, 
 it may be necessary to restart the Assistant for it to take effect. As necessary, I can provide more details about the 
 internals of the application. </p>
+
+<p>Enjoy!</p>
 
 </body>
 </html>
