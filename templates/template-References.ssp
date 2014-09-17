@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/ html4/strict.dtd">
+<html>
+<head>
+	<title>Sente Assistant</title>
+	<style>
+	<!-- #include file="template.css" -->
+	</style>
+</head>
+<body>
+<%@ taglib uri="file:senteAssistantTags.tld" prefix="s" %> 
+<s:setupAssistant />
+<s:getReferences id="references" />
+
+<p style="text-align: right;"><s:getFilterState /></p>
+
+<s:do name="references" property="yourself" variable="aReference"> 
+	<div class="senteReference">
+		<s:prefStyle property="referenceTitleCSS"><s:getReferenceProperty name="aReference" property="searchableTitle" /></s:prefStyle>
+		<s:prefStyle property="referenceAuthorCSS"><s:getAuthor name="aReference" /> <s:getReferenceCitation reference="aReference" /></s:prefStyle>
+	</div><br />
+</s:do>
+
+</body>
+</html>

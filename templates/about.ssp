@@ -1,0 +1,152 @@
+<html>
+	<head>
+	<title>Sente Assistant</title>
+	<style type="text/css">
+	body {
+		font-family: 'Lucida Grande', sans-serif;
+		font-size: 13px;
+		margin: 1em 12em 0em 1em; 
+		line-height: 150%;
+	}
+	h1 { font-size: 16px; font-weight: bold; }
+	h2 { font-size: 14px; font-weight: bold; }
+	.cmd {font-family: LucidaGrande, sans-serif; font-weight: bold;}
+	</style>
+	</head>
+<body>
+<h1>Sente Assistant</h1>
+<p>Version 0.68, 11 April, 2014.<br />
+Copyright &copy; 2012-2014. M. Roberts. This software is available for non-commercial use <u>only</u>.</p>
+
+<h2>Overview</h2>
+<p>Sente Assistant is an add-on application for browsing and searching the notes that you take in Sente.</p>
+
+<p>It extends the functionality of Sente, and provides a view on your library, enabling you to:</p>
+<ul>
+<li>Browse your Sente notes, sorted by their correct position on the source page</li>
+<li>Perform keyword, wildcard, or tag searches of your notes</li>
+<li>Search the references you select in Sente, or across all notes in your Library</li>
+<li>Generate an index of all tagged notes</li>
+<li>Identify duplicate references in your library</li>
+<li>Save your filtered notes or search results in a single RTF, HTML, PDF, ODT, DOC, DOCX, or TXT file</li>
+<li>Customize the presentation of your notes in the Assistant
+</li>
+</ul>
+
+<h2>Disclaimer</h2>
+<p><i>This is a free, prototype application, for non-commercial use only. The Assistant 
+is designed to only read your Sente Library. It includes nothing that modifies or changes the content of your library,
+and should be completely safe. Nevertheless, I offer no warranty or guarantee of the fitness of this application.
+I have tested the Assistant only on OS X 10.6, with Safari 5 and Firefox 13. It should work under
+other configurations, but I haven't tried them.</i></p>
+
+<h2>Rationale</h2>
+<p>I was inspired to create this after I tried Dana Leighton's nifty script for exporting Sente notes. Originally,
+I wanted a way to filter and export my notes into a single file, but I couldn't see how to do this simply with 
+AppleScript (I'm sure it's possible, but I didn't have the time to learn AppleScript). I also wanted a solution
+to a number of the issues with the presentation of notes in Sente (e.g., ordering and font size). So, I decided 
+to create a small add-on application using a language that I know: VisualWorks Smalltalk.</p>
+
+<h2>Getting Started</h2>
+<p>The Assistant is designed for ease of use. It runs as a separate stand-alone application. Rather 
+than presenting a desktop window, it runs through a web browser. That is, you simply point your web browser 
+at a local address, and the Assistant operates there. You do not need an Internet connection for this.</p>
+
+<p>To install the Assistant, unzip the file and place the entire <span class="cmd">Sente Assistant</span> folder 
+inside your <span class="cmd">Applications</span> folder. All the pieces needed by the Assistant are contained 
+within this one folder.</p>
+
+<p>To launch, simply double-click on <span class="cmd">Sente Assistant</span>. Then, point your web browser
+at: <span class="cmd">http://localhost:8008/</span>. This is a local port used only by the Assistant.</p>
+
+<p>At runtime, the Assistant communicates with the Sente application to locate your Library. It will use the Library
+you currently have open in Sente. For this, Sente needs to be running, and this is the expected way to use the
+Assistant. That is, with Sente open, you launch the Assistant. If, however, you launch the Assistant first,
+it will in turn launch Sente to communicate about your current Library.</p>
+
+<p>To quit the Assistant, use the <span class="cmd">Quit</span> command through its web interface. Any changes 
+you make on the <span class="cmd">Preferences</span> page will be saved to disk, and restored for your next session. 
+Note that the <span class="cmd">Quit</span> menu command for the application icon that appears in the dock will not 
+have any effect, as the Assistant is running in the background as a server application.</p>
+
+<h2>Browsing and Searching Notes</h2>
+<p>When you open the Assistant, it will display the references that are currently selected in Sente.
+These should appear in the right-hand side of the Assistant window. For each reference, it will display 
+the associated notes.</p>
+
+<p>By default, these notes are sorted by page number, as in Sente, but they are further ordered by their vertical 
+position on each page. This corrects for the problem in Sente that notes do not follow the expected order in which 
+they appear on each PDF page. The Assistant can handle single or multiple columns of text, and even some more 
+complex page layouts that combine both.</p>
+
+<p>By selecting options from the <span class="cmd">View</span> menu, you can choose various ways to present the notes.
+For example, <span class="cmd">Notes and Summary</span> displays a summary list of all the note titles at the top,
+each of these headings is a hyperlink to the associated note. Each <span class="cmd">View</span> option corresponds 
+to a template file. You can edit these templates to modify the presentation, or add new ones.</p>
+
+<h2>Filtering Notes</h2>
+<p>You can also filter the notes for currently-selected references by choosing the <span class="cmd">Notes Contain</span> 
+option on the <span class="cmd">Filter</span> dropdown menu, and then entering filter strings. In this way, you can search 
+any part of the notes, or focus on the titles, quotations, or comments. If you enter more than one filter, a logical AND will be 
+performed for titles, quotations, comments, and only the notes that contain the specified filter string(s) will be displayed. 
+These filtering operations are case-insensitive. Wildcards are possible using the <span class="cmd">%</span> character.</p>
+
+<p>If you select <span class="cmd">Filter Notes: By Color</span> on the <span class="cmd">Preferences</span> page, 
+a color palette appears on the sidebar. Use this to filter notes by their color. To enable or disable a particular color filter, 
+simply click on it.</p>
+
+<p>Each time you change one of the filtering options, the Assistant will query the Sente Library and refresh the
+notes display. You can also refresh the notes display at any time by clicking on <span class="cmd">Assistant</span> 
+at the top left.</p>
+
+<h2>Searching your Reference Library</h2>
+<p>It is also possible to expand your search from the notes of the currently-selected references to all references in your 
+entire Library. For this, select <span class="cmd">All References</span> from the lower drop-down menu of the 
+<span class="cmd">Filter</span> options. With this option, your note filtering options can be applied to a large set
+of references. This may be useful for locating all notes on a particular author or concept.</p>
+
+<h2>Working with Tagged Notes</h2>
+<p>Using the filters, you can find all notes that have been marked with a specific tag (e.g. <span class="cmd">#history</span>) 
+in the note's comment field. That is, you can enter the tags as free-form text in the note comment. Wildcard searching of tagged 
+notes is also possible, e.g., a search for <span class="cmd">#%history</span> would find <span class="cmd">#americanHistory</span>.</p>
+
+<p>To view an index of all the tags used by the currently-selected references, select <span class="cmd">Tag Index</span>
+on the <span class="cmd">View</span> drop-down menu. You can also view an index of all the tags you have used in the entire 
+library by selecting the <span class="cmd">All References</span> filtering option.</p>
+
+<p>By default, the tag format uses a hash mark (e.g., <span class="cmd">#history</span>), but you can specify your own 
+custom format from the <span class="cmd">Preferences</span> page. The format specified on this page is used to generate 
+the tag index. If you use the hash mark or another single character, your tags cannot include spaces; however, if you use curly 
+brackets or some other characters at the beginning and ending of the tag pattern, your tags can be short phrases that include 
+spaces, hyphens, or other non-alphanumeric characters. For the tag markers, only non-alphanumeric characters are recognized 
+for tags, with the exception of a few reserved characters used by the SQLite database (e.g., single quote, underscrore, percent 
+sign, and ampersand).</p>
+
+<h2>Finding Duplicate References</h2>
+<p>Use the <span class="cmd">View</span> option <span class="cmd">Duplicate References</span> to see all references 
+with identical titles. (This option ignores all of the note filtering settings.) Each duplicate is accompanied by a Sente link. 
+You can click on these light blue links to switch focus to Sente and select the duplicate reference. Although it is best to 
+double-check the duplicate items first, you can easily hit <span class="cmd">Command+Delete</span> in Sente to remove 
+a duplicate reference from your Library.</p>
+
+<h2>Limitations</h2>
+<p>Sente includes a built-in web browser, and it was originally my intention to run the Sente Assistant in one tab of this
+browser. Behind the scenes, the Assistant uses AppleScript to communicate with Sente and query for details about the
+library and current selections. The Sente scripting interface includes a way to explicitly specify the library, but it does not
+seem to work. Even if the library is specified, Sente only responds with meaningful data when the library is the active tab. 
+Thus, it is not currently possible to run the Assistant as a tab inside Sente. If the Sente developers remove this restriction 
+in a future release of the product (and I hope they will consider this), the Assistant could be used inside Sente, as 
+originally intended.</p>
+
+<h2>Customizing</h2>
+<p>While the Sente Assistant has been written using the Smalltalk language, much of the application is implemented 
+using server pages, JavaScript, and CSS. You can customize both the appearance and function of the application by 
+editing the various files in the <span class="cmd">/templates</span> directory. Styles and layouts are defined in the
+file <span class="cmd">template.css</span>, while the various views are generated by JSP-style server pages in the 
+<span class="cmd">template*.ssp</span> files. You can add new template files and the Assistant will find them when
+you refresh. As always, you should make a back-up before you attempt any changes. Each time you modify a page, 
+it may be necessary to restart the Assistant for it to take effect. As necessary, I can provide more details about the 
+internals of the application. </p>
+
+</body>
+</html>
