@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/ html4/strict.dtd">
+<html>
+<head>
+	<title>Sente Assistant</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link href="template.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<%@ taglib uri="file:senteAssistantTags.tld" prefix="s" %> 
+<s:setupAssistant />
+<s:getStatistics />
+<s:getReferences id="references" />
+
+<table class="statistics">
+<tr><td class="sHeading">Library</td><td><%= self application senteLibraryName. %></td></tr>
+<tr><td class="sHeading">Database</td><td><%= self application senteDatabaseName. %></td></tr>
+<tr><td class="sHeading">Annotations</td><td><%= self application annotationsDatabaseFullName. %></td></tr>
+<tr><td class="sHeading">SQLite Version</td><td><s:getProperty name="sqliteVersion" property="asString" /></td></tr>
+<tr><td class="sHeading">Home Directory</td><td><s:getProperty name="homeDirectory" property="asString" /></td></tr>
+<tr><td class="sHeading">Templates Directory</td><td><s:getProperty name="templatesDirectory" property="asString" /></td></tr>
+<tr><td class="sHeading">Selected Items</td><td><s:getProperty name="citations" property="size" /></td></tr>
+<tr><td class="sHeading">Execution Time</td><td><s:getProperty name="executionTime" property="printString" /> ms</td></tr>
+</table>
+
+</body>
+<s:releaseAssistant />
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/ html4/strict.dtd">
+<html>
+<head>
+	<title>Sente Assistant</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link href="template.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<%@ taglib uri="file:senteAssistantTags.tld" prefix="s" %> 
+<s:setupAssistant />
+<s:getTaggedReferences id="references" name="tagDictionary" keys="tagKeys" />
+
+<p style="text-align: right;" />
+<div class="tagIndex">
+	<s:prefStyle property="headingGreyCSS">Tag Index</s:prefStyle>
+	<s:do name="tagKeys" property="yourself" variable="aTagKey"> 
+		<a href="#tag-<s:getProperty name="aTagKey" property="yourself" />" class="indexTag"><s:getProperty name="aTagKey" property="yourself" /></a>
+	</s:do>
+</div>
+<br />
+
+<s:prefStyle property="headingGreyCSS">References</s:prefStyle>
+<s:do name="references" property="yourself" variable="aReference"> 
+	<div class="senteReference">
+		<s:prefStyle property="referenceTitleCSS"><s:getTitle name="aReference" /></s:prefStyle>
+		<s:prefStyle property="referenceAuthorCSS"><s:getAuthor name="aReference" /> <s:getReferenceCitation reference="aReference" /></s:prefStyle>
+	</div>
+</s:do>
+<br />
+
+<div class="taggedNotes">
+	<s:do name="tagKeys" property="yourself" variable="aTagKey"> 
+		<s:prefStyle property="headingGreyCSS"><a id="tag-<s:getProperty name="aTagKey" property="yourself" />" ><s:getProperty name="aTagKey" property="yourself" /></a></s:prefStyle>
+		<s:getTaggedNotes id="tagDictionary" tagKey="aTagKey" notes="taggedNotes" />
+
+		<div class="tagSummary">
+		<s:do name="taggedNotes" property="yourself" variable="aNote"> 
+			<s:getNoteReference note="aNote" reference="aReference" />
+			<s:noteStyle name="aNote">
+				<s:prefStyle property="noteTitleCSS"><s:getNoteTitle name="aNote" /></s:prefStyle>
+					<s:prefStyle property="noteBodyCSS"><s:getNoteQuotation name="aNote" />
+ 						<s:getNoteCitation reference="aReference" note="aNote" form="full" /></s:prefStyle>
+					<s:prefStyle property="noteCommentCSS"><s:getNoteComment name="aNote" /></s:prefStyle>
+			</s:noteStyle>
+		</s:do>
+		<br />
+		</div>
+
+	</s:do>
+</div>
+
+</body>
+<s:releaseAssistant />
+</html>

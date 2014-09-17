@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist SYSTEM "file://localhost/System/Library/DTDs/PropertyList.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleGetInfoString</key>
+	<string>VisualWorks Version 7.9, Copyright © 1999-2012 Cincom Systems, Inc.  All rights reserved.</string>
+	<key>CFBundleName</key>
+	<string>VisualWorks</string>
+	<key>CFBundleShortVersionString</key>
+	<string>VisualWorks Version 7.9</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 1999-2012 Cincom Systems, Inc.  All rights reserved.</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>im</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>ImageIcons</string>
+			<key>CFBundleTypeName</key>
+			<string>Image</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+		</dict>
+	</array>
+	<key>CFBundleExecutable</key>
+	<string>visual</string>
+	<key>CFBundleIconFile</key>
+	<string>MainIcons</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.cincom.vw7.9</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>HPS7</string>
+	<key>CFBundleVersion</key>
+	<string>7.9</string>
+	<key>NSMainNibFile</key>
+	<string>MainMenu</string>
+	<key>NSPrincipalClass</key>
+	<string>STApplication</string>
+</dict>
+</plist>
