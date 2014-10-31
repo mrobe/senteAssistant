@@ -1,10 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/ html4/strict.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
 	<title>Sente Assistant</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link href="includes/dialog.css" rel="stylesheet" type="text/css" />
-	<link href="template.css" rel="stylesheet" type="text/css" />
+	<style><!-- #include file = "template.css" --></style>
 	<script src="ckeditor/ckeditor.js" type="text/javascript" ></script>
 	<script src="includes/prototype.js" type="text/javascript" ></script>
 	<script src="includes/dialog.js" type="text/javascript" ></script>
