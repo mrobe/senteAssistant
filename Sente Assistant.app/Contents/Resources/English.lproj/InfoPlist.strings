@@ -3,12 +3,12 @@
 <plist version="0.9">
 <dict>
 	<key>CFBundleGetInfoString</key>
-	<string>VisualWorks Version 7.9, Copyright 1999-2012 Cincom Systems, Inc.  All rights reserved.</string>
+	<string>VisualWorks Version 8.0, Copyright © 1999-2014 Cincom Systems, Inc.  All rights reserved.</string>
 	<key>CFBundleName</key>
 	<string>VisualWorks</string>
 	<key>CFBundleShortVersionString</key>
-	<string>VisualWorks Version 7.9</string>
+	<string>VisualWorks Version 8.0</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright 1999-2012 Cincom Systems, Inc.  All rights reserved.</string>
+	<string>Copyright © 1999-2014 Cincom Systems, Inc.  All rights reserved.</string>
 </dict>
 </plist>

@@ -15,8 +15,8 @@
 	</head>
 <body>
 <h1>Sente Assistant</h1>
-<p>Version 0.71, 31 October, 2014.<br />
-Copyright &copy; 2012-2014. M. Roberts. This software is available for non-commercial use <u>only</u>.</p>
+<p>Version 0.72, 21 January, 2015.<br />
+Copyright &copy; 2012-2015. M. Roberts. This software is available for non-commercial use <u>only</u>.</p>
 
 <h2>Overview</h2>
 <p>Sente Assistant is an add-on application for browsing and searching the notes that you take in Sente.</p>
@@ -35,7 +35,7 @@ Copyright &copy; 2012-2014. M. Roberts. This software is available for non-comme
 </ul>
 
 <h2>Disclaimer</h2>
-<p><i>Sente Assistant is a free, third-party application, not a supported product. It is offered "as is" at no
+<p><i>Sente Assistant is a free, third-party application, not a supported product. It is a completely separate application, an add-on, <u>not</u> a plugin. It is offered "as is" at no
 cost, for non-commercial use only. It is my hope that it may be useful for your research. The Assistant is 
 designed to only read your Sente Library. It includes nothing that modifies or changes the content of your library,
 and should be completely safe. Nevertheless, I offer no warranty or guarantee of the fitness of this application.
