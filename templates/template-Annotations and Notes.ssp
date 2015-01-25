@@ -15,7 +15,7 @@
 <%@ taglib uri="file:senteAssistantTags.tld" prefix="s" %> 
 <s:setupAssistant />
 <s:getReferences id="references" />
-<s:prefStyle property="headingGreyCSS">Annotations</s:prefStyle>
+<s:prefStyle property="headingGreyCSS">Annotations and Notes</s:prefStyle>
 <p style="text-align: right;" /><a class="noteSource" style="font-size: 14px;" href="javascript:;" id="dialog_1">Get all Metadata</a>
 
 <s:do name="references" property="yourself" variable="aReference"> 
@@ -25,7 +25,6 @@
 		<s:prefStyle property="referenceAuthorCSS"><s:getFullCitation reference="aReference" /></s:prefStyle>
 		<s:getAnnotations reference="aReference" />
 
-		<s:prefStyle property="headingGreyCSS">Notes</s:prefStyle>
 		<s:getNotes id="aReference" notes="notes" />
 		<div class="senteNotes">
 		<s:do name="notes" property="yourself" variable="aNote"> 
