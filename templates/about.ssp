@@ -15,7 +15,7 @@
 	</head>
 <body>
 <h1>Sente Assistant</h1>
-<p>Version 0.75, 25 January, 2015.<br />
+<p>Version 0.76, 28 March, 2015.<br />
 Copyright &copy; 2012-2015. M. Roberts. This software is available for non-commercial use <u>only</u>.</p>
 
 <h2>Overview</h2>
@@ -35,12 +35,7 @@ Copyright &copy; 2012-2015. M. Roberts. This software is available for non-comme
 </ul>
 
 <h2>Disclaimer</h2>
-<p><i>Sente Assistant is a free, third-party application, not a supported product. It is a completely separate application, an add-on, <u>not</u> a plugin. It is offered "as is" at no
-cost, for non-commercial use only. It is my hope that it may be useful for your research. The Assistant is 
-designed to only read your Sente Library. It includes nothing that modifies or changes the content of your library,
-and should be completely safe. Nevertheless, I offer no warranty or guarantee of the fitness of this application.
-I have tested the Assistant with Sente 6.6.5 on OS X 10.9.2, with recent versions of Safari and Firefox. It should 
-work under other configurations (e.g. Chrome), but I haven't tried them.</i></p>
+<p><i>Sente Assistant is a free, third-party application, not a supported product. It is a completely separate application, an add-on, <u>not</u> a plugin. It is offered "as is" at no cost, for non-commercial use only. It is my hope that it may be useful for your research. The Assistant is designed to only read your Sente Library. It includes nothing that modifies or changes the content of your library, and should be completely safe. Nevertheless, I offer no warranty or guarantee of the fitness of this application I have tested the Assistant with Sente 6.7.8 on OS X 10.10.2, with recent versions of Safari and Firefox. It should work under other configurations (e.g. Chrome), but I haven't tried them.</i></p>
 
 <h2>Rationale</h2>
 <p>I was inspired to create this after I tried Dana Leighton's nifty script for exporting Sente notes. Originally,
@@ -97,7 +92,7 @@ for this string against all the note fields. These filtering operations are case
 
 <p>If you select <span class="cmd">Filter Notes: By Color</span> on the <span class="cmd">Preferences</span> page, 
 a color palette appears on the sidebar. Use this to filter notes by their color. To enable or disable a particular color filter, 
-simply click on it.</p>
+simply click on it. If none are selected, no notes will be displayed.</p>
 
 <p>Each time you change one of the filtering options, the Assistant will query the Sente Library and refresh the
 notes display. You can also refresh the notes display at any time by clicking on <span class="cmd">Assistant</span> 
@@ -168,6 +163,9 @@ file <span class="cmd">template.css</span>, while the various views are generate
 you refresh. As always, you should make a back-up before you attempt any changes. Each time you modify a page, 
 it may be necessary to restart the Assistant for it to take effect. As necessary, I can provide more details about the 
 internals of the application. </p>
+
+<h2>Troubleshooting</h2>
+<p>When reporting any problems, please include the two log files in the Sente Assistant folder (e.g., senteAssistant.log ). Sente Assistant also includes an internal debugging mode, which you can <a href="debug-on.ssp">enable</a> or <a href="debug-off.ssp">disable</a>.</p>
 
 <p>Enjoy!</p>
 

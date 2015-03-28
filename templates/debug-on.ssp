@@ -1,0 +1,18 @@
+<html>
+<head>
+	<style type="text/css">
+	body {
+		font-family: 'Lucida Grande', sans-serif; 
+		font-size: 13px;
+		background-color: #E3E0D1;
+		margin: 3em 15em 0em 1em; 
+		line-height: 150%;
+	}
+	h1 { font-size: 14px; font-weight: bold; }
+	</style>
+</head>
+<body>
+<% self application preferences debugMode: true. %>
+<h1>Debugging Enabled</h1>
+</body>
+</html>
