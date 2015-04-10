@@ -303,6 +303,10 @@ Use the name attribute to identify the variable.</info>
       <name>notes</name>
       <required>true</required>
     </attribute>
+    <attribute>
+      <name>sortBy</name>
+      <required>false</required>
+    </attribute>
   </tag>      
 
   <tag>
@@ -321,6 +325,10 @@ Use the name attribute to identify the variable.</info>
     <attribute>
       <name>tagKey</name>
       <required>true</required>
+    </attribute>
+    <attribute>
+      <name>sortBy</name>
+      <required>false</required>
     </attribute>
   </tag>      
 
