@@ -181,6 +181,21 @@ Use the name attribute to identify the variable.</info>
   </tag>      
 
   <tag>
+    <name>showReference</name>
+    <tagclass>VisualWave.ShowReferenceTag</tagclass>
+    <info></info>
+    <bodycontent>JSP</bodycontent>
+    <attribute>
+      <name>name</name>
+      <required>true</required>
+    </attribute>
+    <attribute>
+      <name>notes</name>
+      <required>true</required>
+    </attribute>
+  </tag>      
+
+  <tag>
     <name>getAnnotationManagementLinks</name>
     <tagclass>VisualWave.GetAnnotationManagementTag</tagclass>
     <info></info>

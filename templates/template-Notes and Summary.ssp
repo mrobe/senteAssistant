@@ -15,13 +15,14 @@
 <p style="text-align: right;"><s:getFilterState /></p>
 
 <s:do name="references" property="yourself" variable="aReference"> 
+	<s:getNotes id="aReference" notes="notes" />
+	<s:showReference name="aReference" notes="notes">
 	<div class="senteReference">
 		<s:prefStyle property="referenceTitleCSS"><s:getTitle name="aReference" /></s:prefStyle>
 		<s:prefStyle property="referenceAuthorCSS"><s:getAuthor name="aReference" /> <s:getReferenceCitation reference="aReference" /></s:prefStyle>
  		<br />
 
 		<s:prefStyle property="headingGreyCSS">Summary</s:prefStyle>
-		<s:getNotes id="aReference" notes="notes" />
 		<div class="notesSummary">
 		<s:do name="notes" property="yourself" variable="aNote"> 
 			<s:prefStyle property="noteSummaryCSS">
@@ -44,6 +45,7 @@
 		</div>
 
 	</div>
+	</s:showReference>
 </s:do>
 
 </body>
