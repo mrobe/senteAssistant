@@ -154,6 +154,10 @@ body {
 	margin-top:	6px;
 }
 
+.referenceSortingDetails {
+	color: #9A9A9A;
+}
+
 .referenceAnnotation {
 }
 
@@ -295,4 +299,46 @@ a.indexTag:hover {
 	height: 18px;
 	display: block;
 	text-indent: -9999px;
+}
+
+.sortControl, .filterState {
+	font-size: 12px;
+	color: silver;
+}
+
+.styled-select select {
+   background: transparent;
+   width: 150px;
+   padding: 3px;
+   font-size: 12px;
+   line-height: 1;
+   border: 1px solid #ccc;
+   border-radius: 0;
+   margin: 4px 2px;
+   -webkit-appearance: none;
+}
+
+.styled-select {
+   display: inline;
+   overflow: hidden;
+   border: 0;
+}
+
+.sortOption {
+	color: silver;
+}
+
+.headingContainer {
+	overflow: hidden;
+	margin-bottom: 8px;
+}
+
+.headingLeftColumn {
+	float: left;
+	width: 220px;
+}
+
+.headingRightColumn {
+	float: right;
+	text-align: right;
 }

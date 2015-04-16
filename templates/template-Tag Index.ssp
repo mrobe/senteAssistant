@@ -9,10 +9,10 @@
 <%@ taglib uri="file:senteAssistantTags.tld" prefix="s" %> 
 <s:setupAssistant />
 <s:getTaggedReferences id="references" name="tagDictionary" keys="tagKeys" />
+<s:showHeading title="Tag Index" />
 
 <p style="text-align: right;" />
 <div class="tagIndex">
-	<s:prefStyle property="headingGreyCSS">Tag Index</s:prefStyle>
 	<s:do name="tagKeys" property="yourself" variable="aTagKey"> 
 		<a href="#tag-<s:getProperty name="aTagKey" property="yourself" />" class="indexTag"><s:getProperty name="aTagKey" property="yourself" /></a>
 	</s:do>
@@ -23,7 +23,7 @@
 <s:do name="references" property="yourself" variable="aReference"> 
 	<div class="senteReference">
 		<s:prefStyle property="referenceTitleCSS"><s:getTitle name="aReference" /></s:prefStyle>
-		<s:prefStyle property="referenceAuthorCSS"><s:getAuthor name="aReference" /> <s:getReferenceCitation reference="aReference" /></s:prefStyle>
+		<s:prefStyle property="referenceAuthorCSS"><s:getAuthor name="aReference" /> <s:getReferenceCitation reference="aReference" /> <s:getSortingDetails name="aReference" /></s:prefStyle>
 	</div>
 </s:do>
 <br />

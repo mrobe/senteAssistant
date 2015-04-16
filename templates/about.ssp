@@ -15,7 +15,7 @@
 	</head>
 <body>
 <h1>Sente Assistant</h1>
-<p>Version 0.81 11 April, 2015.<br />
+<p>Version 0.82 16 April, 2015.<br />
 Copyright &copy; 2012-2015. M. Roberts. This software is available for non-commercial use <u>only</u>.</p>
 
 <h2>Overview</h2>
@@ -71,8 +71,12 @@ have any effect, as the Assistant is running in the background as a server appli
 These should appear in the right-hand side of the Assistant window. For each reference, it will display 
 the associated notes.</p>
 
-<p>By default, these notes are sorted by page number, as in Sente, but they are further ordered by their vertical 
-position on each page. This corrects for the problem in Sente that notes do not follow the expected order in which 
+<p>The references displayed by the Assistant can be sorted by author, title, year, type, status, date added or modified,
+in either ascending or descending order. To change the sorting rules, use the drop-down menus at the top right of
+the right-hand view of the Assistant.</p>
+
+<p>By default, the notes for each reference are sorted by page number, as in Sente, but they are further ordered by 
+their vertical position on each page. This corrects for the problem in Sente that notes do not follow the expected order in which 
 they appear on each PDF page. The Assistant can handle single or multiple columns of text, and even some more 
 complex page layouts that combine both.</p>
 

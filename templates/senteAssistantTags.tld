@@ -214,6 +214,17 @@ Use the name attribute to identify the variable.</info>
   </tag>      
 
   <tag>
+    <name>showHeading</name>
+    <tagclass>VisualWave.ShowHeadingTag</tagclass>
+    <info></info>
+    <bodycontent>empty</bodycontent>
+    <attribute>
+      <name>title</name>
+      <required>true</required>
+    </attribute>
+  </tag>      
+
+  <tag>
     <name>div</name>
     <tagclass>VisualWave.DivTag</tagclass>
     <info></info>
@@ -286,6 +297,17 @@ Use the name attribute to identify the variable.</info>
   <tag>
     <name>getPublicationTitle</name>
     <tagclass>VisualWave.GetReferencePublicationTitleTag</tagclass>
+    <info></info>
+    <bodycontent>empty</bodycontent>
+    <attribute>
+      <name>name</name>
+      <required>true</required>
+    </attribute>
+  </tag>      
+
+  <tag>
+    <name>getSortingDetails</name>
+    <tagclass>VisualWave.GetReferenceSortingDetailsTag</tagclass>
     <info></info>
     <bodycontent>empty</bodycontent>
     <attribute>

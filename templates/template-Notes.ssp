@@ -1,24 +1,22 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/ html4/strict.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
 	<title>Sente Assistant</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link href="template.css" rel="stylesheet" type="text/css" />
+	<style><!-- #include file = "template.css" --></style>
 </head>
 <body>
 <%@ taglib uri="file:senteAssistantTags.tld" prefix="s" %> 
 <s:setupAssistant />
 <s:getReferences id="references" />
-
-<p style="text-align: right;"><s:getFilterState /></p>
-<s:prefStyle property="headingGreyCSS">Notes</s:prefStyle>
+<s:showHeading title="Notes" />
 
 <s:do name="references" property="yourself" variable="aReference">
 	<s:getNotes id="aReference" notes="notes" />
 	<s:showReference name="aReference" notes="notes">
 	<div class="senteReference">
 		<s:prefStyle property="referenceTitleCSS"><s:getTitle name="aReference" /></s:prefStyle>
-		<s:prefStyle property="referenceAuthorCSS"><s:getAuthor name="aReference" /> <s:getReferenceCitation reference="aReference" /></s:prefStyle>
+		<s:prefStyle property="referenceAuthorCSS"><s:getAuthor name="aReference" /> <s:getReferenceCitation reference="aReference" /> <s:getSortingDetails name="aReference" /></s:prefStyle>
 
 	<div class="senteNotes">
 	<s:do name="notes" property="yourself" variable="aNote"> 
