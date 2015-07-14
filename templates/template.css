@@ -256,6 +256,11 @@ body {
 	white-space: nowrap;
 }
 
+.indexTagCount {
+	font-size: 0.825em;
+	color: #BBBBBB;
+}
+
 a.indexTag:hover {
 	color: #444444;
 	background-color: #DFE9F0;

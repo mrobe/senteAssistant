@@ -83,6 +83,21 @@ Use the name attribute to identify the variable.</info>
   </tag>      
 
   <tag>
+    <name>getDictionaryElement</name>
+    <tagclass>VisualWave.GetDictionaryElementTag</tagclass>
+    <info>Return the value of an association.</info>
+    <bodycontent>empty</bodycontent>
+    <attribute>
+      <name>dictionary</name>
+      <required>true</required>
+    </attribute>
+    <attribute>
+      <name>key</name>
+      <required>true</required>
+    </attribute>
+  </tag>      
+
+  <tag>
     <name>setupAssistant</name>
     <tagclass>VisualWave.SetupAssistantTag</tagclass>
     <info></info>
@@ -143,6 +158,10 @@ Use the name attribute to identify the variable.</info>
     </attribute>
     <attribute>
       <name>keys</name>
+      <required>true</required>
+    </attribute>
+    <attribute>
+      <name>counts</name>
       <required>true</required>
     </attribute>
   </tag>      

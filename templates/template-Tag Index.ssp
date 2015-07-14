@@ -8,13 +8,13 @@
 <body>
 <%@ taglib uri="file:senteAssistantTags.tld" prefix="s" %> 
 <s:setupAssistant />
-<s:getTaggedReferences id="references" name="tagDictionary" keys="tagKeys" />
+<s:getTaggedReferences id="references" name="tagDictionary" keys="tagKeys" counts="tagCounts" />
 <s:showHeading title="Tag Index" />
 
 <p style="text-align: right;" />
 <div class="tagIndex">
 	<s:do name="tagKeys" property="yourself" variable="aTagKey"> 
-		<a href="#tag-<s:getProperty name="aTagKey" property="yourself" />" class="indexTag"><s:getProperty name="aTagKey" property="yourself" /></a>
+		<a href="#tag-<s:getProperty name="aTagKey" property="yourself" />" class="indexTag"><s:getProperty name="aTagKey" property="yourself" /></a> <span class="indexTagCount"><s:getDictionaryElement dictionary="tagCounts" key="aTagKey" /></span>
 	</s:do>
 </div>
 <br />
