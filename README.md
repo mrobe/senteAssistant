@@ -1,4 +1,4 @@
 senteAssistant
 ==============
 
-Note: with the demise of Sente and end of the Sente user's forum, Sente Assistant is no longer supported.
+Note: with the demise of Sente and end of the user's forum, Sente Assistant is no longer supported.
